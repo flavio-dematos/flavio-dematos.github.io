@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flávio de Matos — Advogado em transição para Tecnologia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F1EEE6;
+    --paper-raised: #FBFAF6;
+    --ink: #1B2430;
+    --ink-soft: #5B6472;
+    --blue: #1D3557;
+    --blue-soft: #3A5A85;
+    --amber: #B9812F;
+    --mono-accent: #2F6F5E;
+    --line: #D9D3C2;
+    --line-strong: #C3BCA6;
+    --max-w: 760px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+
+  .wrap {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- HEADER ---------- */
+
+  header.site {
+    padding: 28px 0 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  header.site .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 18px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .brand {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
+  }
+
+  nav.site-nav {
+    display: flex;
+    gap: 22px;
+    font-size: 0.85rem;
+  }
+
+  nav.site-nav a {
+    text-decoration: none;
+    color: var(--ink-soft);
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+
+  nav.site-nav a:hover,
+  nav.site-nav a:focus-visible {
+    color: var(--blue);
+    border-color: var(--blue);
+  }
+
+  /* ---------- HERO ---------- */
+
+  .hero {
+    padding: 72px 0 56px;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mono-accent);
+    background: rgba(47, 111, 94, 0.08);
+    border: 1px solid rgba(47, 111, 94, 0.25);
+    padding: 4px 10px;
+    border-radius: 3px;
+    margin-bottom: 22px;
+  }
+
+  h1.name {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 700;
+    font-size: clamp(2.4rem, 6vw, 3.4rem);
+    line-height: 1.05;
+    margin: 0 0 14px;
+    color: var(--ink);
+  }
+
+  .tagline {
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+    max-width: 46ch;
+    margin: 0 0 34px;
+  }
+
+  .tagline strong {
+    color: var(--blue);
+    font-weight: 600;
+  }
+
+  /* ---------- BIO TOGGLE ---------- */
+
+  .bio-block {
+    border: 1px solid var(--line-strong);
+    background: var(--paper-raised);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 36px;
+  }
+
+  .bio-toggle-bar {
+    display: flex;
+    border-bottom: 1px solid var(--line-strong);
+    background: rgba(0,0,0,0.02);
+  }
+
+  .bio-toggle-bar button {
+    flex: 1;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+    padding: 11px 14px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--ink-soft);
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  }
+
+  .bio-toggle-bar button.active {
+    color: var(--blue);
+    border-bottom-color: var(--blue);
+    background: var(--paper-raised);
+  }
+
+  .bio-toggle-bar button:focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: -2px;
+  }
+
+  .bio-panel {
+    padding: 26px 28px;
+    display: none;
+  }
+
+  .bio-panel.active { display: block; }
+
+  .bio-panel.doc {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1.02rem;
+    color: var(--ink);
+  }
+
+  .bio-panel.doc .art-label {
+    display: block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--amber);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 10px;
+  }
+
+  .bio-panel.code {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.86rem;
+    color: var(--ink);
+    white-space: pre-wrap;
+  }
+
+  .bio-panel.code .c { color: var(--mono-accent); }
+  .bio-panel.code .s { color: var(--blue-soft); }
+  .bio-panel.code .k { color: var(--amber); }
+
+  /* ---------- CTA ROW ---------- */
+
+  .cta-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    padding: 10px 18px;
+    border-radius: 4px;
+    border: 1px solid var(--line-strong);
+    transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+  }
+
+  .btn:hover, .btn:focus-visible {
+    transform: translateY(-1px);
+    border-color: var(--blue);
+  }
+
+  .btn.primary {
+    background: var(--blue);
+    color: var(--paper-raised);
+    border-color: var(--blue);
+  }
+
+  .btn.primary:hover { background: var(--blue-soft); }
+
+  .btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+  /* ---------- SECTIONS ---------- */
+
+  section.article {
+    padding: 52px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .art-eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.76rem;
+    color: var(--amber);
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  h2.art-title {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    font-size: 1.7rem;
+    margin: 0 0 22px;
+    color: var(--ink);
+  }
+
+  p.lead {
+    color: var(--ink-soft);
+    max-width: 62ch;
+  }
+
+  /* formação / lists */
+
+  .stack-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .stack-item {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 16px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .stack-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .stack-period {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.76rem;
+    color: var(--mono-accent);
+    padding-top: 2px;
+  }
+
+  .stack-org {
+    font-weight: 600;
+    font-size: 0.98rem;
+    margin: 0 0 3px;
+    color: var(--ink);
+  }
+
+  .stack-role {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  @media (max-width: 560px) {
+    .stack-item { grid-template-columns: 1fr; gap: 4px; }
+  }
+
+  /* competências */
+
+  .skill-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+
+  @media (max-width: 560px) {
+    .skill-cols { grid-template-columns: 1fr; }
+  }
+
+  .skill-col h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    margin: 0 0 14px;
+  }
+
+  .skill-col.now h3 { color: var(--mono-accent); }
+  .skill-col.next h3 { color: var(--amber); }
+
+  .skill-col ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .skill-col li {
+    font-size: 0.92rem;
+    padding-left: 16px;
+    position: relative;
+    color: var(--ink);
+  }
+
+  .skill-col.now li::before {
+    content: "●";
+    position: absolute;
+    left: 0;
+    color: var(--mono-accent);
+    font-size: 0.6rem;
+    top: 6px;
+  }
+
+  .skill-col.next li::before {
+    content: "○";
+    position: absolute;
+    left: 0;
+    color: var(--amber);
+    font-size: 0.6rem;
+    top: 6px;
+  }
+
+  /* proof of concept */
+
+  .proof-box {
+    background: var(--paper-raised);
+    border: 1px solid var(--line-strong);
+    border-radius: 6px;
+    padding: 22px 24px;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+  }
+
+  .proof-box strong { color: var(--ink); }
+
+  /* footer */
+
+  footer.site {
+    padding: 40px 0 60px;
+    border-top: 1px solid var(--line);
+  }
+
+  footer.site .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  footer.site p {
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  footer .cta-row .btn { padding: 8px 14px; font-size: 0.8rem; }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <span class="brand">Flávio de Matos</span>
+    <nav class="site-nav">
+      <a href="#sobre">Sobre</a>
+      <a href="#formacao">Formação</a>
+      <a href="#experiencia">Experiência</a>
+      <a href="#competencias">Competências</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <span class="eyebrow">Brasília, DF · Em transição</span>
+    <h1 class="name">Flávio de Matos</h1>
+    <p class="tagline">Advogado (OAB/DF) construindo, na prática, a ponte entre <strong>rigor jurídico</strong> e <strong>lógica de automação</strong>.</p>
+
+    <div class="bio-block">
+      <div class="bio-toggle-bar" role="tablist" aria-label="Formato da apresentação">
+        <button type="button" class="active" id="tab-doc" role="tab" aria-selected="true" aria-controls="panel-doc">Ver como documento</button>
+        <button type="button" id="tab-code" role="tab" aria-selected="false" aria-controls="panel-code">Ver como código</button>
+      </div>
+
+      <div class="bio-panel doc active" id="panel-doc" role="tabpanel" aria-labelledby="tab-doc">
+        <span class="art-label">Art. 1º</span>
+        Advogado inscrito na OAB/DF, atualmente em transição para a área de Tecnologia. Cursa Computação na Universidade de Brasília e exerce, na Advocacia Maciel, o controle de prazos e processos judiciais — rotina que o aproximou, na prática, da lógica de sistemas.
+      </div>
+
+      <div class="bio-panel code" id="panel-code" role="tabpanel" aria-labelledby="tab-code" hidden>
+<span class="c">"""
+Advogado (OAB/DF) em transição para Tecnologia.
+Constrói a ponte entre rigor jurídico e lógica
+de automação — sem atalhos, com prática.
+"""</span>
+
+<span class="k">perfil</span> = {
+    <span class="s">"base"</span>: <span class="s">"Brasília, DF"</span>,
+    <span class="s">"formação"</span>: [<span class="s">"Direito — UniCEUB"</span>, <span class="s">"Computação — UnB"</span>],
+    <span class="s">"atua_hoje"</span>: <span class="s">"Controladoria Jurídica"</span>,
+    <span class="s">"em_construção"</span>: [<span class="s">"Python"</span>, <span class="s">"Automação"</span>, <span class="s">"Dados"</span>],
+    <span class="s">"já_domina"</span>: [<span class="s">"Sites e conteúdo com IA"</span>, <span class="s">"Edição de vídeo"</span>],
+}</div>
+    </div>
+
+    <div class="cta-row">
+      <a class="btn primary" href="https://www.linkedin.com/in/flaviosbm/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.15 1.45-2.15 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.11 20.45H3.56V9h3.55v11.45z"/></svg>
+        LinkedIn
+      </a>
+      <a class="btn" href="https://github.com/flavio-dematos" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.69-1.28-1.69-1.04-.72.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.83 1.18 3.09 0 4.41-2.7 5.38-5.27 5.67.42.36.78 1.07.78 2.16 0 1.56-.01 2.82-.01 3.2 0 .31.2.66.79.55A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
+        GitHub
+      </a>
+      <a class="btn" href="mailto:flavio2034@live.com">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 5.5A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 18.5v-13zm2.1.5 7.9 6.1L19.9 6H4.1zM20 8.2l-7.4 5.7a1 1 0 0 1-1.2 0L4 8.2V18h16V8.2z"/></svg>
+        E-mail
+      </a>
+    </div>
+  </section>
+
+  <section class="article wrap" id="sobre">
+    <span class="art-eyebrow">Art. 1º</span>
+    <h2 class="art-title">Trajetória</h2>
+    <p class="lead">
+      Formado em Direito pelo UniCEUB em 2022, Flávio construiu experiência em Direito Civil, do Consumidor, Previdenciário e do Trabalho — passando por PROCON, Ministério da Justiça, OAB/DF e AGU antes de assumir a controladoria jurídica na Advocacia Maciel. Ao longo dessa rotina, um padrão ficou evidente: prazos, sistemas e processos repetitivos que poderiam ser automatizados. Essa observação prática — não uma decisão abstrata — foi o que o levou a cursar Computação na UnB e a começar, de forma autodidata, a aplicar IA na criação de sites e produção de conteúdo em vídeo.
+    </p>
+  </section>
+
+  <section class="article wrap" id="formacao">
+    <span class="art-eyebrow">Art. 2º</span>
+    <h2 class="art-title">Formação</h2>
+    <ul class="stack-list">
+      <li class="stack-item">
+        <span class="stack-period">2025 — 2029</span>
+        <div>
+          <p class="stack-org">Universidade de Brasília (UnB)</p>
+          <p class="stack-role">Licenciatura em Computação · em andamento</p>
+        </div>
+      </li>
+      <li class="stack-item">
+        <span class="stack-period">2019 — 2022</span>
+        <div>
+          <p class="stack-org">UniCEUB</p>
+          <p class="stack-role">Bacharelado em Direito</p>
+        </div>
+      </li>
+      <li class="stack-item">
+        <span class="stack-period">Pós-graduação</span>
+        <div>
+          <p class="stack-org">AGU</p>
+          <p class="stack-role">Funções Institucionais da AGU</p>
+        </div>
+      </li>
+      <li class="stack-item">
+        <span class="stack-period">Pós-graduação</span>
+        <div>
+          <p class="stack-org">EBRADI</p>
+          <p class="stack-role">Advocacia do Direito Negocial e Imobiliário</p>
+        </div>
+      </li>
+      <li class="stack-item">
+        <span class="stack-period">Pós-graduação</span>
+        <div>
+          <p class="stack-org">Legale</p>
+          <p class="stack-role">Direito Civil e Direito Processual Civil</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section class="article wrap" id="experiencia">
+    <span class="art-eyebrow">Art. 3º</span>
+    <h2 class="art-title">Experiência</h2>
+    <ul class="stack-list">
+      <li class="stack-item">
+        <span class="stack-period">mar/2026 — atual</span>
+        <div>
+          <p class="stack-org">Advocacia Maciel</p>
+          <p class="stack-role">Advogado Controlador Jurídico</p>
+        </div>
+      </li>
+      <li class="stack-item">
+        <span class="stack-period">mar/2024 — atual</span>
+        <div>
+          <p class="stack-org">AGU — Procuradoria-Regional Federal da 1ª Região</p>
+          <p class="stack-role">Estagiário de Pós-Graduação</p>
+        </div>
+      </li>
+      <li class="stack-item">
+        <span class="stack-period">mai/2023 — abr/2026</span>
+        <div>
+          <p class="stack-org">Advogado Autônomo</p>
+          <p class="stack-role">Direito Civil e do Consumidor</p>
+        </div>
+      </li>
+      <li class="stack-item">
+        <span class="stack-period">jul/2023 — nov/2023</span>
+        <div>
+          <p class="stack-org">OAB/DF</p>
+          <p class="stack-role">Residente Jurídico</p>
+        </div>
+      </li>
+      <li class="stack-item">
+        <span class="stack-period">fev/2021 — mai/2022</span>
+        <div>
+          <p class="stack-org">Ministério da Justiça (DRCI)</p>
+          <p class="stack-role">Estagiário</p>
+        </div>
+      </li>
+      <li class="stack-item">
+        <span class="stack-period">fev/2020 — fev/2021</span>
+        <div>
+          <p class="stack-org">PROCON</p>
+          <p class="stack-role">Estagiário</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section class="article wrap" id="competencias">
+    <span class="art-eyebrow">Art. 4º</span>
+    <h2 class="art-title">Competências</h2>
+    <div class="skill-cols">
+      <div class="skill-col now">
+        <h3>Em uso constante</h3>
+        <ul>
+          <li>Gestão de prazos e processos (PJe, Projudi, ESAJ)</li>
+          <li>Criação de sites e conteúdo com IA</li>
+          <li>Edição de vídeo</li>
+          <li>Direito Civil e Processual</li>
+        </ul>
+      </div>
+      <div class="skill-col next">
+        <h3>Em construção</h3>
+        <ul>
+          <li>Lógica de programação (Python)</li>
+          <li>Automação de processos</li>
+          <li>Análise de dados</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="article wrap" id="prova">
+    <span class="art-eyebrow">Art. 5º</span>
+    <h2 class="art-title">Sobre este site</h2>
+    <div class="proof-box">
+      <strong>Este site é, ele mesmo, a prova de conceito.</strong> Foi estruturado e escrito com apoio de IA — exatamente a competência descrita acima como "em uso constante". Nenhuma parte da experiência jurídica ou acadêmica aqui apresentada foi exagerada: as competências em Python, automação e dados estão marcadas como em construção porque é isso que são, hoje.
+    </div>
+  </section>
+</main>
+
+<footer class="site" id="contato">
+  <div class="wrap">
+    <p>Flávio de Matos · Brasília, DF</p>
+    <div class="cta-row">
+      <a class="btn" href="https://www.linkedin.com/in/flaviosbm/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/flavio-dematos" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="mailto:flavio2034@live.com">E-mail</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function() {
+    var tabDoc = document.getElementById('tab-doc');
+    var tabCode = document.getElementById('tab-code');
+    var panelDoc = document.getElementById('panel-doc');
+    var panelCode = document.getElementById('panel-code');
+
+    function showDoc() {
+      tabDoc.classList.add('active');
+      tabCode.classList.remove('active');
+      tabDoc.setAttribute('aria-selected', 'true');
+      tabCode.setAttribute('aria-selected', 'false');
+      panelDoc.hidden = false;
+      panelDoc.classList.add('active');
+      panelCode.hidden = true;
+      panelCode.classList.remove('active');
+    }
+
+    function showCode() {
+      tabCode.classList.add('active');
+      tabDoc.classList.remove('active');
+      tabCode.setAttribute('aria-selected', 'true');
+      tabDoc.setAttribute('aria-selected', 'false');
+      panelCode.hidden = false;
+      panelCode.classList.add('active');
+      panelDoc.hidden = true;
+      panelDoc.classList.remove('active');
+    }
+
+    tabDoc.addEventListener('click', showDoc);
+    tabCode.addEventListener('click', showCode);
+  })();
+</script>
+
+</body>
+</html>
