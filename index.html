@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Flávio de Matos | Direito e Computação</title>
+<link rel="alternate" hreflang="pt-BR" href="https://flavio-dematos.github.io/">
+<link rel="alternate" hreflang="en" href="https://flavio-dematos.github.io/?lang=en">
 <meta name="description" content="Advogado (OAB/DF) e estudante de Computação na UnB. Trajetória, formação, experiência e o trabalho na intersecção entre Direito e tecnologia.">
 <meta property="og:title" content="Flávio de Matos | Direito e Computação">
 <meta property="og:description" content="Advogado (OAB/DF) e estudante de Computação na UnB, trabalhando onde o Direito encontra a tecnologia.">
@@ -403,6 +405,25 @@
     .tl-panels { display: block; }
     .tl-panel { opacity: 1 !important; visibility: visible !important; transform: none !important; margin-bottom: 12px; break-inside: avoid; }
   }
+
+  /* ---------- idioma e sistema jurídico ---------- */
+  .top-tools { display: flex; align-items: center; gap: 8px; }
+  .lang-switch, .juris-switch { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; background: var(--surface); }
+  .lang-switch button, .juris-switch button {
+    font: 600 0.78rem 'Instrument Sans', sans-serif; color: var(--ink-soft);
+    background: none; border: 0; border-radius: 999px; padding: 4px 10px; cursor: pointer;
+  }
+  .juris-switch { margin-top: 6px; flex-wrap: wrap; }
+  .juris-switch button { font-size: 0.92rem; font-weight: 500; padding: 7px 16px; }
+  .lang-switch button:hover, .juris-switch button:hover { color: var(--ink); }
+  .lang-switch button[aria-pressed="true"], .juris-switch button[aria-pressed="true"] { background: var(--violet); color: var(--on-violet); }
+  :root[lang="en"] .only-pt, :root:not([lang="en"]) .only-en { display: none !important; }
+  .bilingual[data-active="br"] [data-for="pt"], .bilingual[data-active="pt"] [data-for="br"] { display: none !important; }
+  .rule-law .orig { display: block; font-family: 'Instrument Sans', sans-serif; font-size: 0.8rem; font-style: italic; color: var(--ink-soft); margin-top: 6px; }
+  .cal li.holiday { border-color: transparent; color: var(--ink-soft); background: repeating-linear-gradient(135deg, var(--weekend) 0 5px, var(--bg) 5px 10px); }
+  .cal li.span { width: auto; padding: 6px 12px; }
+  .legend .l-holiday::before { border-color: transparent; background: repeating-linear-gradient(135deg, var(--lilac) 0 2px, var(--bg) 2px 4px); }
+  @media (max-width: 640px) { .theme-btn { padding: 6px 9px; } }
 </style>
 </head>
 <body>
@@ -411,18 +432,24 @@
   <div class="wrap">
     <div class="top-row">
       <a class="brand" href="#inicio">Flávio de Matos</a>
-      <button class="theme-btn" type="button" id="theme-btn" aria-label="Alternar tema">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
-        <span class="theme-label" id="theme-label">Tema: sistema</span>
-      </button>
+      <div class="top-tools">
+        <div class="lang-switch" role="group" aria-label="Idioma" data-i18n-attr="aria-label=ui.langGroup">
+          <button type="button" data-lang="pt" aria-pressed="true" lang="pt-BR" title="Português">PT</button>
+          <button type="button" data-lang="en" aria-pressed="false" lang="en" title="English">EN</button>
+        </div>
+        <button class="theme-btn" type="button" id="theme-btn" aria-label="Alternar tema">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          <span class="theme-label" id="theme-label">Tema: sistema</span>
+        </button>
+      </div>
     </div>
-    <nav class="tabs" role="tablist" aria-label="Seções do site">
-      <button class="tab" role="tab" id="tab-inicio" aria-controls="inicio" data-target="inicio">Início</button>
-      <button class="tab" role="tab" id="tab-trajetoria" aria-controls="trajetoria" data-target="trajetoria">Trajetória</button>
-      <button class="tab" role="tab" id="tab-experiencia" aria-controls="experiencia" data-target="experiencia">Experiência</button>
-      <button class="tab" role="tab" id="tab-formacao" aria-controls="formacao" data-target="formacao">Formação</button>
-      <button class="tab" role="tab" id="tab-competencias" aria-controls="competencias" data-target="competencias">Competências</button>
-      <button class="tab" role="tab" id="tab-contato" aria-controls="contato" data-target="contato">Contato</button>
+    <nav class="tabs" role="tablist" aria-label="Seções do site" data-i18n-attr="aria-label=ui.tabsLabel">
+      <button class="tab" role="tab" id="tab-inicio" aria-controls="inicio" data-target="inicio" data-i18n="tab.inicio">Início</button>
+      <button class="tab" role="tab" id="tab-trajetoria" aria-controls="trajetoria" data-target="trajetoria" data-i18n="tab.trajetoria">Trajetória</button>
+      <button class="tab" role="tab" id="tab-experiencia" aria-controls="experiencia" data-target="experiencia" data-i18n="tab.experiencia">Experiência</button>
+      <button class="tab" role="tab" id="tab-formacao" aria-controls="formacao" data-target="formacao" data-i18n="tab.formacao">Formação</button>
+      <button class="tab" role="tab" id="tab-competencias" aria-controls="competencias" data-target="competencias" data-i18n="tab.competencias">Competências</button>
+      <button class="tab" role="tab" id="tab-contato" aria-controls="contato" data-target="contato" data-i18n="tab.contato">Contato</button>
     </nav>
   </div>
 </header>
@@ -432,10 +459,10 @@
   <!-- ================= INÍCIO ================= -->
   <section class="panel" id="inicio" role="tabpanel" aria-labelledby="tab-inicio" tabindex="-1">
     <div class="intro">
-      <img class="portrait" src="foto.jpg" alt="Retrato de Flávio de Matos, de blazer cinza e camisa branca" width="200" height="267">
+      <img class="portrait" src="foto.jpg" alt="Retrato de Flávio de Matos, de blazer cinza e camisa branca" data-i18n-attr="alt=inicio.photoAlt" width="200" height="267">
       <div>
         <h1>Flávio de Matos</h1>
-        <p class="lead">Advogado inscrito na OAB/DF e estudante de Computação na Universidade de Brasília. Trabalho com o lado operacional do processo judicial e estou aprendendo a escrever, em código, as regras que hoje aplico à mão.</p>
+        <p class="lead" data-i18n="inicio.lead">Advogado inscrito na OAB/DF e estudante de Computação na Universidade de Brasília. Trabalho com o lado operacional do processo judicial e estou aprendendo a escrever, em código, as regras que hoje aplico à mão.</p>
         <div class="actions">
           <a class="btn solid" href="https://www.linkedin.com/in/flaviosbm/" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.15 1.45-2.15 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.11 20.45H3.56V9h3.55v11.45z"/></svg>
@@ -445,28 +472,40 @@
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55l-.02-2.11c-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.69-1.28-1.69-1.04-.72.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.76.11 3.05.74.81 1.18 1.83 1.18 3.09 0 4.41-2.7 5.38-5.27 5.67.42.36.78 1.07.78 2.16l-.01 3.2c0 .31.2.66.79.55A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg>
             GitHub
           </a>
-          <button class="btn" type="button" data-go="contato">Contato</button>
+          <button class="btn" type="button" data-go="contato" data-i18n="tab.contato">Contato</button>
         </div>
       </div>
     </div>
 
     <div class="now">
-      <div><strong>Hoje no Direito</strong><span>Advogado Controlador Jurídico na Advocacia Maciel, com 200 a 300 análises processuais por dia.</span></div>
-      <div><strong>Hoje na Computação</strong><span>3º semestre da Graduação em Computação na UnB: C, C++, Python, lógica e redes.</span></div>
-      <div><strong>O que procuro</strong><span>De preferência, vagas em que as duas formações contem, como legal ops, legaltech e controladoria jurídica. Também vagas estritamente jurídicas e estágios em tecnologia.</span></div>
+      <div><strong data-i18n="inicio.nowLawT">Hoje no Direito</strong><span data-i18n="inicio.nowLaw">Advogado Controlador Jurídico na Advocacia Maciel, com 200 a 300 análises processuais por dia.</span></div>
+      <div><strong data-i18n="inicio.nowCsT">Hoje na Computação</strong><span data-i18n="inicio.nowCs">3º semestre da Graduação em Computação na UnB: C, C++, Python, lógica e redes.</span></div>
+      <div><strong data-i18n="inicio.seekT">O que procuro</strong><span data-i18n="inicio.seek">De preferência, vagas em que as duas formações contem, como legal ops, legaltech e controladoria jurídica. Também vagas estritamente jurídicas e estágios em tecnologia.</span></div>
     </div>
 
-    <div class="bilingual">
-      <h2>A mesma regra, escrita duas vezes</h2>
-      <p>Controlar prazos é boa parte do meu trabalho. A regra de contagem do Código de Processo Civil é precisa o bastante para virar um algoritmo, e é esse tipo de tradução que me interessa.</p>
+    <div class="bilingual" id="bilingual" data-active="br">
+      <h2 data-i18n="rule.title">A mesma regra, escrita duas vezes</h2>
+      <p data-i18n="rule.intro">Controlar prazos é boa parte do meu trabalho. As regras de contagem dos códigos de processo civil são precisas o bastante para virar algoritmos. Compare a regra brasileira, que conta só dias úteis, com a portuguesa, que corre de forma contínua e se suspende nas férias judiciais.</p>
+
+      <div class="juris-switch" role="group" aria-label="Sistema jurídico" data-i18n-attr="aria-label=rule.jurisGroup">
+        <button type="button" data-juris="br" aria-pressed="true" data-i18n="rule.br">Brasil · CPC de 2015</button>
+        <button type="button" data-juris="pt" aria-pressed="false" data-i18n="rule.pt">Portugal · CPC de 2013</button>
+      </div>
 
       <div class="rule">
         <div class="rule-law">
-          <p class="src">Na lei</p>
-          <blockquote>Na contagem de prazo em dias, estabelecido por lei ou pelo juiz, computar-se-ão somente os dias úteis.<cite>CPC, art. 219</cite></blockquote>
-          <blockquote>Salvo disposição em contrário, os prazos serão contados excluindo o dia do começo e incluindo o dia do vencimento.<cite>CPC, art. 224</cite></blockquote>
+          <p class="src" data-i18n="rule.inLaw">Na lei</p>
+          <div data-for="br">
+            <blockquote><span data-i18n="rule.br219">Na contagem de prazo em dias, estabelecido por lei ou pelo juiz, computar-se-ão somente os dias úteis.</span><span class="orig only-en">Original: “Na contagem de prazo em dias, estabelecido por lei ou pelo juiz, computar-se-ão somente os dias úteis.”</span><cite data-i18n="rule.br219c">CPC, art. 219</cite></blockquote>
+            <blockquote><span data-i18n="rule.br224">Salvo disposição em contrário, os prazos serão contados excluindo o dia do começo e incluindo o dia do vencimento.</span><span class="orig only-en">Original: “Salvo disposição em contrário, os prazos serão contados excluindo o dia do começo e incluindo o dia do vencimento.”</span><cite data-i18n="rule.br224c">CPC, art. 224</cite></blockquote>
+          </div>
+          <div data-for="pt">
+            <blockquote><span data-i18n="rule.pt138a">O prazo processual, estabelecido por lei ou fixado por despacho do juiz, é contínuo, suspendendo-se, no entanto, durante as férias judiciais, salvo se a sua duração for igual ou superior a seis meses ou se tratar de atos a praticar em processos que a lei considere urgentes.</span><span class="orig only-en">Original: “O prazo processual, estabelecido por lei ou fixado por despacho do juiz, é contínuo, suspendendo-se, no entanto, durante as férias judiciais [...]”</span><cite data-i18n="rule.pt138ac">CPC português, art. 138.º, n.º 1</cite></blockquote>
+            <blockquote><span data-i18n="rule.pt138b">Quando o prazo para a prática do ato processual terminar em dia em que os tribunais estiverem encerrados, transfere-se o seu termo para o 1.º dia útil seguinte.</span><span class="orig only-en">Original: “Quando o prazo para a prática do ato processual terminar em dia em que os tribunais estiverem encerrados, transfere-se o seu termo para o 1.º dia útil seguinte.”</span><cite data-i18n="rule.pt138bc">CPC português, art. 138.º, n.º 2</cite></blockquote>
+          </div>
         </div>
-<pre class="rule-code" aria-label="A mesma regra em Python"><code><span class="k">from</span> datetime <span class="k">import</span> date, timedelta
+
+<pre class="rule-code only-pt" data-for="br" aria-label="A regra brasileira em Python"><code><span class="k">from</span> datetime <span class="k">import</span> date, timedelta
 
 <span class="k">def</span> <span class="f">vencimento</span>(intimacao: date, dias: int) -&gt; date:
     <span class="s">"""Contagem de prazo do CPC, arts. 219 e 224."""</span>
@@ -479,38 +518,77 @@
             contados += <span class="n">1</span>
     <span class="c"># art. 224: inclui o dia do vencimento</span>
     <span class="k">return</span> atual</code></pre>
+<pre class="rule-code only-en" data-for="br" aria-label="The Brazilian rule in Python"><code><span class="k">from</span> datetime <span class="k">import</span> date, timedelta
+
+<span class="k">def</span> <span class="f">due_date</span>(served_on: date, days: int) -&gt; date:
+    <span class="s">"""Brazilian CPC, arts. 219 and 224."""</span>
+    current, counted = served_on, <span class="n">0</span>
+    <span class="k">while</span> counted &lt; days:
+        <span class="c"># art. 224: the starting day is excluded</span>
+        current += timedelta(days=<span class="n">1</span>)
+        <span class="c"># art. 219: only business days count</span>
+        <span class="k">if</span> current.weekday() &lt; <span class="n">5</span>:
+            counted += <span class="n">1</span>
+    <span class="c"># art. 224: the final day is included</span>
+    <span class="k">return</span> current</code></pre>
+<pre class="rule-code only-pt" data-for="pt" aria-label="A regra portuguesa em Python"><code><span class="k">from</span> datetime <span class="k">import</span> date, timedelta
+
+<span class="k">def</span> <span class="f">termo</span>(notificacao: date, dias: int) -&gt; date:
+    <span class="s">"""CPC português, art. 138.º"""</span>
+    atual, contados = notificacao, <span class="n">0</span>
+    <span class="k">while</span> contados &lt; dias:
+        <span class="c"># CC, art. 279.º, b): exclui o dia inicial</span>
+        atual += timedelta(days=<span class="n">1</span>)
+        <span class="c"># n.º 1: contínuo, suspenso nas férias</span>
+        <span class="k">if not</span> <span class="f">ferias_judiciais</span>(atual):
+            contados += <span class="n">1</span>
+    <span class="c"># n.º 2: tribunal fechado leva o termo</span>
+    <span class="c"># ao 1.º dia útil seguinte</span>
+    <span class="k">while</span> atual.weekday() &gt;= <span class="n">5</span>:
+        atual += timedelta(days=<span class="n">1</span>)
+    <span class="k">return</span> atual</code></pre>
+<pre class="rule-code only-en" data-for="pt" aria-label="The Portuguese rule in Python"><code><span class="k">from</span> datetime <span class="k">import</span> date, timedelta
+
+<span class="k">def</span> <span class="f">end_of_term</span>(notified_on: date, days: int) -&gt; date:
+    <span class="s">"""Portuguese CPC, art. 138."""</span>
+    current, counted = notified_on, <span class="n">0</span>
+    <span class="k">while</span> counted &lt; days:
+        <span class="c"># Civil Code, art. 279(b): first day excluded</span>
+        current += timedelta(days=<span class="n">1</span>)
+        <span class="c"># art. 138(1): continuous, paused in court holidays</span>
+        <span class="k">if not</span> <span class="f">court_holidays</span>(current):
+            counted += <span class="n">1</span>
+    <span class="c"># art. 138(2): courts closed, move to next business day</span>
+    <span class="k">while</span> current.weekday() &gt;= <span class="n">5</span>:
+        current += timedelta(days=<span class="n">1</span>)
+    <span class="k">return</span> current</code></pre>
       </div>
 
       <div class="calc">
         <form id="calc-form" onsubmit="return false">
-          <label class="field">Data da intimação
+          <label class="field"><span id="calc-date-label">Data da intimação</span>
             <input type="date" id="calc-date" required>
           </label>
-          <label class="field">Prazo em dias úteis
+          <label class="field"><span id="calc-days-label">Prazo em dias úteis</span>
             <input type="number" id="calc-days" min="1" max="30" value="15" required>
           </label>
         </form>
         <p class="result" id="calc-result" aria-live="polite"></p>
-        <ol class="cal" id="calc-cal" aria-label="Dias contados até o vencimento"></ol>
-        <div class="legend" aria-hidden="true">
-          <span class="l-start">Intimação</span>
-          <span class="l-off">Fim de semana, não conta</span>
-          <span class="l-count">Dia útil contado</span>
-          <span class="l-due">Vencimento</span>
-        </div>
-        <p class="note">Versão didática: não considera feriados, recesso forense, suspensões de prazo nem as regras de publicação no Diário de Justiça eletrônico (art. 224, §§ 2º e 3º). Não use para controle real de prazos.</p>
+        <ol class="cal" id="calc-cal"></ol>
+        <div class="legend" id="calc-legend" aria-hidden="true"></div>
+        <p class="note" id="calc-note"></p>
       </div>
     </div>
   </section>
 
   <!-- ================= TRAJETÓRIA ================= -->
   <section class="panel" id="trajetoria" role="tabpanel" aria-labelledby="tab-trajetoria" tabindex="-1" hidden>
-    <h2>Da advocacia à Computação, sem sair do Direito</h2>
-    <p class="lead">Não troquei uma área pela outra. A Computação entrou na minha formação como resposta a algo que eu via todos os dias no trabalho jurídico.</p>
+    <h2 data-i18n="traj.title">Da advocacia à Computação, sem sair do Direito</h2>
+    <p class="lead" data-i18n="traj.lead">Não troquei uma área pela outra. A Computação entrou na minha formação como resposta a algo que eu via todos os dias no trabalho jurídico.</p>
 
     <div class="tl" id="tl">
-      <h3 class="sr-only">Linha do tempo interativa</h3>
-      <p class="tl-hint" id="tl-hint"><span class="hint-mouse">Passe o mouse sobre a linha ou clique nos anos para acompanhar a história. Também funciona com as setas do teclado.</span><span class="hint-touch">Toque em um ano ou arraste o dedo sobre a linha para acompanhar a história.</span></p>
+      <h3 class="sr-only" data-i18n="tl.sr">Linha do tempo interativa</h3>
+      <p class="tl-hint" id="tl-hint"><span class="hint-mouse" data-i18n="tl.hintMouse">Passe o mouse sobre a linha ou clique nos anos para acompanhar a história. Também funciona com as setas do teclado.</span><span class="hint-touch" data-i18n="tl.hintTouch">Toque em um ano ou arraste o dedo sobre a linha para acompanhar a história.</span></p>
 
       <div class="tl-stage" id="tl-stage">
         <div class="tl-track" id="tl-track">
@@ -521,17 +599,17 @@
             <span class="tl-char-shadow"></span>
           </div>
           <div class="tl-line" aria-hidden="true"><div class="tl-fill" id="tl-fill"></div></div>
-          <div class="tl-markers" id="tl-markers" role="group" aria-label="Períodos da trajetória"></div>
+          <div class="tl-markers" id="tl-markers" role="group" aria-label="Períodos da trajetória" data-i18n-attr="aria-label=tl.markers"></div>
         </div>
       </div>
 
       <div class="tl-controls">
-        <button class="tl-step" type="button" id="tl-prev" aria-label="Período anterior">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>Anterior
+        <button class="tl-step" type="button" id="tl-prev" aria-label="Período anterior" data-i18n-attr="aria-label=tl.prevAria">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg><span data-i18n="tl.prev">Anterior</span>
         </button>
         <span class="tl-count" id="tl-count" aria-live="polite"></span>
-        <button class="tl-step" type="button" id="tl-next" aria-label="Próximo período">
-          Próximo<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+        <button class="tl-step" type="button" id="tl-next" aria-label="Próximo período" data-i18n-attr="aria-label=tl.nextAria">
+          <span data-i18n="tl.next">Próximo</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
         </button>
       </div>
 
@@ -550,6 +628,8 @@
         links     opcional: lista de { "rotulo": "...", "url": "..." }
         imagem    opcional: { "src": "arquivo.jpg", "alt": "descrição" } (o arquivo precisa existir no repositório)
         posicao   opcional: posição na linha, de 0 a 100. Sem ela, os marcadores ficam igualmente espaçados.
+        en        versão em inglês dos mesmos campos de texto (rotulo, periodo, area, titulo, texto, links, imagem.alt).
+                  Se faltar algum campo em "en", o site usa o texto em português.
     -->
     <script type="application/json" id="tl-data">
     [
@@ -562,7 +642,16 @@
         "texto": [
           "Fiz 576 horas de inglês na Casa Thomas Jefferson, em Brasília, do nível Teens 1 ao Avançado 4A.",
           "Essa base se confirmou em 2024, com nota geral 7.0 (C1) no IELTS Academic."
-        ]
+        ],
+        "en": {
+          "periodo": "2012 to 2016",
+          "area": "Languages",
+          "titulo": "Building my English",
+          "texto": [
+            "I took 576 hours of English at Casa Thomas Jefferson in Brasília, from Teens 1 to Advanced 4A.",
+            "That foundation was confirmed in 2024 with an overall band score of 7.0 (C1) on the IELTS Academic."
+          ]
+        }
       },
       {
         "id": "direito",
@@ -573,7 +662,15 @@
         "texto": [
           "Ingressei no curso de Direito do UniCEUB pelo ENEM, no primeiro semestre de 2019.",
           "No mesmo ano comecei o francês no UnB Idiomas, que segui até o nível Intermediário II, somando 270 horas."
-        ]
+        ],
+        "en": {
+          "area": "Law",
+          "titulo": "Starting law school",
+          "texto": [
+            "I enrolled in the Law program at UniCEUB through the national entrance exam (ENEM) in early 2019.",
+            "That same year I started French at UnB Idiomas, the University of Brasília language program, and continued up to Intermediate II, for a total of 270 hours."
+          ]
+        }
       },
       {
         "id": "procon",
@@ -584,7 +681,16 @@
         "texto": [
           "Meu primeiro estágio foi no Procon/DF, em contato direto com o direito do consumidor, área em que atuo até hoje.",
           "Em 2020 também fiz o nível básico de italiano no UnB Idiomas."
-        ]
+        ],
+        "en": {
+          "periodo": "Feb 2020 to Feb 2021",
+          "area": "Law",
+          "titulo": "First internship, at Procon/DF",
+          "texto": [
+            "My first internship was at Procon/DF, the consumer protection agency of the Federal District, working directly with consumer law, a field I still practice today.",
+            "In 2020 I also completed beginner Italian at UnB Idiomas."
+          ]
+        }
       },
       {
         "id": "mj",
@@ -595,7 +701,16 @@
         "texto": [
           "De março de 2021 a abril de 2022 estagiei no Departamento de Recuperação de Ativos e Cooperação Jurídica Internacional (DRCI), do Ministério da Justiça e Segurança Pública.",
           "No mesmo período trabalhei como monitor bilíngue na KM Transporte Escolar, acompanhando em inglês alunos estrangeiros de diversas idades e cuidando da segurança nos trajetos. Também comecei o espanhol no UnB Idiomas, que levei até o Intermediário II."
-        ]
+        ],
+        "en": {
+          "periodo": "2021 to 2022",
+          "area": "Law and languages",
+          "titulo": "Ministry of Justice and bilingual monitor",
+          "texto": [
+            "From March 2021 to April 2022 I interned at the Department of Asset Recovery and International Legal Cooperation (DRCI) of Brazil's Ministry of Justice and Public Security.",
+            "During the same period I worked as a bilingual monitor at KM Transporte Escolar, accompanying international students of all ages in English and looking after their safety on school routes. I also started Spanish at UnB Idiomas, which I continued up to Intermediate II."
+          ]
+        }
       },
       {
         "id": "formatura",
@@ -609,7 +724,19 @@
         ],
         "links": [
           { "rotulo": "Ler o TCC no repositório do UniCEUB", "url": "https://repositorio.uniceub.br/items/e0f0bb10-304d-45be-9f9a-37c86ad7b434" }
-        ]
+        ],
+        "en": {
+          "periodo": "Dec 2022 to Feb 2023",
+          "area": "Law",
+          "titulo": "Law degree and Bar exam",
+          "texto": [
+            "I finished the program in December 2022 with a GPA of 9.02 out of 10 and graduated in February 2023. That same month I passed the 36th Brazilian Bar Exam (OAB).",
+            "My undergraduate thesis, on the accusation of genocide against Indigenous peoples during the COVID-19 pandemic, was published in UniCEUB's institutional repository and included in an official collection by the university."
+          ],
+          "links": [
+            { "rotulo": "Read the thesis (in Portuguese) on UniCEUB's repository", "url": "https://repositorio.uniceub.br/items/e0f0bb10-304d-45be-9f9a-37c86ad7b434" }
+          ]
+        }
       },
       {
         "id": "residencia",
@@ -620,7 +747,15 @@
         "texto": [
           "No segundo semestre fiz a 1ª Residência Jurídica da OAB/DF, nos escritórios Moreschi e Reis e MFA Advogadas, com atuação em direito civil, do consumidor e médico, além de uma rotina intensa de demandas trabalhistas na MFA.",
           "Também concluí a especialização em Advocacia do Direito Negocial e Imobiliário, pela EBRADI e Universidade São Judas Tadeu."
-        ]
+        ],
+        "en": {
+          "area": "Law",
+          "titulo": "Legal Residency and first specializations",
+          "texto": [
+            "In the second half of the year I completed the first Legal Residency program of the Bar Association of the Federal District (OAB/DF), at the firms Moreschi e Reis and MFA Advogadas, working on civil, consumer and medical law cases, plus a heavy load of employment cases at MFA.",
+            "I also completed a postgraduate specialization in Business and Real Estate Law at EBRADI and Universidade São Judas Tadeu."
+          ]
+        }
       },
       {
         "id": "agu",
@@ -631,7 +766,16 @@
         "texto": [
           "Fiz o estágio de pós-graduação na Procuradoria Regional Federal da 1ª Região, vinculado à especialização em Funções Institucionais da Escola Superior da AGU. Elaborei minutas de peças, acompanhei processos judiciais e alimentei o sistema SAPIENS.",
           "Em 2024 também concluí as especializações em Direito Civil e Processual Civil, Direito Tributário e Processo Tributário e Auditoria Fiscal."
-        ]
+        ],
+        "en": {
+          "periodo": "Mar 2024 to Mar 2026",
+          "area": "Law",
+          "titulo": "Two years at the Attorney General's Office",
+          "texto": [
+            "I completed a postgraduate legal internship at the Federal Regional Attorney's Office of the 1st Region, part of Brazil's Office of the Attorney General (AGU), linked to the AGU School's specialization program. I drafted legal briefs, tracked court cases and maintained records in the SAPIENS system.",
+            "In 2024 I also completed specializations in Civil Law and Civil Procedure, Tax Law and Tax Procedure, and Tax Auditing."
+          ]
+        }
       },
       {
         "id": "unb",
@@ -642,7 +786,15 @@
         "texto": [
           "No segundo semestre de 2025 entrei na Graduação em Computação da Universidade de Brasília.",
           "A rotina com prazos e sistemas processuais tinha deixado claro que boa parte do trabalho jurídico é fluxo: regras fixas, dados que passam de um sistema a outro, documentos que se repetem. Eu queria aprender a construir as ferramentas que usava."
-        ]
+        ],
+        "en": {
+          "area": "Computing",
+          "titulo": "Computing degree at the University of Brasília",
+          "texto": [
+            "In the second half of 2025 I started an undergraduate degree in Computing at the University of Brasília (UnB).",
+            "Working with deadlines and case management systems had shown me that much of legal work is a flow: fixed rules, data moving from one system to another, documents that repeat. I wanted to learn how to build the tools I was using."
+          ]
+        }
       },
       {
         "id": "hoje",
@@ -653,50 +805,59 @@
         "texto": [
           "Desde março de 2026 sou Advogado Controlador Jurídico na Advocacia Maciel, com 200 a 300 análises processuais por dia em sistemas como PJe, Projudi, ESAJ e Projuris.",
           "Na UnB, curso o 3º semestre e desenvolvo em equipe um sistema de gestão Kanban em C++. Este site, com a calculadora de prazos e esta linha do tempo, faz parte dessa prática."
-        ]
+        ],
+        "en": {
+          "rotulo": "Today",
+          "area": "Law and Computing",
+          "titulo": "Legal operations and code",
+          "texto": [
+            "Since March 2026 I have been a Legal Controller (attorney) at Advocacia Maciel, reviewing 200 to 300 case files a day in court systems such as PJe, Projudi, ESAJ and Projuris.",
+            "At UnB I am in my third semester, building a Kanban project management system in C++ as part of a team. This website, with its deadline calculator and this timeline, is part of that practice."
+          ]
+        }
       }
     ]
     </script>
 
     <div class="meet">
-      <h2>Onde as duas áreas se encontram</h2>
+      <h2 data-i18n="meet.title">Onde as duas áreas se encontram</h2>
       <div class="meet-grid">
         <div>
-          <h3>Regras como lógica</h3>
-          <p>Prazos, requisitos e procedimentos podem ser descritos como condições e passos. Quem conhece a norma em detalhe consegue especificar com precisão o que um sistema deve fazer.</p>
+          <h3 data-i18n="meet.aT">Regras como lógica</h3>
+          <p data-i18n="meet.a">Prazos, requisitos e procedimentos podem ser descritos como condições e passos. Quem conhece a norma em detalhe consegue especificar com precisão o que um sistema deve fazer.</p>
         </div>
         <div>
-          <h3>Processos como dados</h3>
-          <p>Cada sistema processual guarda movimentações, datas e partes. Organizados, esses dados mostram gargalos, riscos de prazo e volume de trabalho de um escritório.</p>
+          <h3 data-i18n="meet.bT">Processos como dados</h3>
+          <p data-i18n="meet.b">Cada sistema processual guarda movimentações, datas e partes. Organizados, esses dados mostram gargalos, riscos de prazo e volume de trabalho de um escritório.</p>
         </div>
         <div>
-          <h3>Tradução nos dois sentidos</h3>
-          <p>Explicar tecnologia para advogados e regras jurídicas para quem desenvolve é parte do trabalho em legal ops e legaltech. As duas formações me deixam confortável nos dois lados da conversa.</p>
+          <h3 data-i18n="meet.cT">Tradução nos dois sentidos</h3>
+          <p data-i18n="meet.c">Explicar tecnologia para advogados e regras jurídicas para quem desenvolve é parte do trabalho em legal ops e legaltech. As duas formações me deixam confortável nos dois lados da conversa.</p>
         </div>
       </div>
-      <p class="honest">Ainda estou nos fundamentos da programação. O que trago pronto é o conhecimento do processo e da rotina jurídica. O que estou construindo é a capacidade de automatizá-la.</p>
+      <p class="honest" data-i18n="meet.honest">Ainda estou nos fundamentos da programação. O que trago pronto é o conhecimento do processo e da rotina jurídica. O que estou construindo é a capacidade de automatizá-la.</p>
     </div>
   </section>
 
   <!-- ================= EXPERIÊNCIA ================= -->
   <section class="panel" id="experiencia" role="tabpanel" aria-labelledby="tab-experiencia" tabindex="-1" hidden>
-    <h2>Experiência</h2>
+    <h2 data-i18n="tab.experiencia">Experiência</h2>
     <div class="areas">
-      <h3>Áreas de atuação</h3>
+      <h3 data-i18n="exp.areasT">Áreas de atuação</h3>
       <div class="areas-grid">
-        <div><strong>Cível</strong><span>Principal área de atuação, do estágio à controladoria jurídica.</span></div>
-        <div><strong>Consumidor</strong><span>Procon/DF, Residência Jurídica e rotina processual em escritório.</span></div>
-        <div><strong>Conciliação</strong><span>Atuação em audiências e na busca de soluções consensuais.</span></div>
+        <div><strong data-i18n="exp.civilT">Cível</strong><span data-i18n="exp.civil">Principal área de atuação, do estágio à controladoria jurídica.</span></div>
+        <div><strong data-i18n="exp.consT">Consumidor</strong><span data-i18n="exp.cons">Procon/DF, Residência Jurídica e rotina processual em escritório.</span></div>
+        <div><strong data-i18n="exp.concT">Conciliação</strong><span data-i18n="exp.conc">Atuação em audiências e na busca de soluções consensuais.</span></div>
       </div>
-      <p class="areas-more"><strong>Também atuei:</strong> direito do trabalho, com experiência intensa na MFA Advogadas, e advocacia pública federal na AGU. <strong>Formação sem atuação:</strong> direito tributário, com especialização concluída e interesse na área.</p>
+      <p class="areas-more" data-i18n="exp.more"><strong>Também atuei:</strong> direito do trabalho, com experiência intensa na MFA Advogadas, e advocacia pública federal na AGU. <strong>Formação sem atuação:</strong> direito tributário, com especialização concluída e interesse na área.</p>
     </div>
     <ol class="entries" reversed>
       <li class="entry">
-        <span class="period">mar/2026 até hoje</span>
+        <span class="period" data-i18n="exp.maciel.p">mar/2026 até hoje</span>
         <div>
-          <h3>Advogado Controlador Jurídico</h3>
+          <h3 data-i18n="exp.maciel.t">Advogado Controlador Jurídico</h3>
           <p class="org">Advocacia Maciel, Brasília</p>
-          <ul>
+          <ul data-i18n="exp.maciel.ul">
             <li>Realiza cerca de 200 a 300 análises processuais diárias, com controle de prazos e cumprimento de obrigações de fazer.</li>
             <li>Emite guias, agenda e acompanha audiências, atua em saneamentos e elabora relatórios processuais.</li>
             <li>Opera os sistemas PJe, SEI, Projudi, ESAJ, CPJ e Projuris.</li>
@@ -705,11 +866,11 @@
         </div>
       </li>
       <li class="entry featured">
-        <span class="period">mar/2024 a mar/2026</span>
+        <span class="period" data-i18n="exp.agu.p">mar/2024 a mar/2026</span>
         <div>
-          <h3>Estagiário de pós-graduação em Direito <span class="tag">AGU</span></h3>
-          <p class="org">Advocacia-Geral da União, Procuradoria Regional Federal da 1ª Região</p>
-          <ul>
+          <h3><span data-i18n="exp.agu.t">Estagiário de pós-graduação em Direito</span> <span class="tag">AGU</span></h3>
+          <p class="org" data-i18n="exp.agu.o">Advocacia-Geral da União, Procuradoria Regional Federal da 1ª Região</p>
+          <ul data-i18n="exp.agu.ul">
             <li>Elaborou minutas de peças processuais sob supervisão de Procuradores Federais.</li>
             <li>Acompanhou e movimentou processos judiciais e inseriu dados e publicações no sistema SAPIENS.</li>
             <li>Realizou pesquisa de jurisprudência, doutrina e legislação e preparou documentos internos.</li>
@@ -718,22 +879,22 @@
         </div>
       </li>
       <li class="entry">
-        <span class="period">2º semestre de 2023</span>
+        <span class="period" data-i18n="exp.res.p">2º semestre de 2023</span>
         <div>
-          <h3>Residente jurídico</h3>
-          <p class="org">OAB/DF, 1ª Residência Jurídica (Projeto Carreiras)</p>
-          <ul>
+          <h3 data-i18n="exp.res.t">Residente jurídico</h3>
+          <p class="org" data-i18n="exp.res.o">OAB/DF, 1ª Residência Jurídica (Projeto Carreiras)</p>
+          <ul data-i18n="exp.res.ul">
             <li>Atuou nos escritórios Moreschi e Reis e MFA Advogadas, em direito civil, do consumidor, médico e do trabalho.</li>
             <li>Na MFA Advogadas, teve atuação intensa em demandas trabalhistas.</li>
           </ul>
         </div>
       </li>
       <li class="entry">
-        <span class="period">abr/2021 a set/2022</span>
+        <span class="period" data-i18n="exp.km.p">abr/2021 a set/2022</span>
         <div>
-          <h3>Monitor bilíngue</h3>
+          <h3 data-i18n="exp.km.t">Monitor bilíngue</h3>
           <p class="org">KM Transporte Escolar Ltda., Brasília</p>
-          <ul>
+          <ul data-i18n="exp.km.ul">
             <li>Acompanhou, em inglês, alunos estrangeiros de diversas idades no transporte escolar por vans.</li>
             <li>Auxiliou no controle e na gestão da segurança dos alunos durante os trajetos.</li>
             <li>Manteve comunicação contínua com o motorista e com a base para o controle das rotas e dos embarques.</li>
@@ -741,17 +902,17 @@
         </div>
       </li>
       <li class="entry">
-        <span class="period">mar/2021 a abr/2022</span>
+        <span class="period" data-i18n="exp.mj.p">mar/2021 a abr/2022</span>
         <div>
-          <h3>Estagiário</h3>
-          <p class="org">Ministério da Justiça e Segurança Pública, DRCI</p>
+          <h3 data-i18n="exp.intern">Estagiário</h3>
+          <p class="org" data-i18n="exp.mj.o">Ministério da Justiça e Segurança Pública, DRCI</p>
         </div>
       </li>
       <li class="entry">
-        <span class="period">fev/2020 a fev/2021</span>
+        <span class="period" data-i18n="exp.procon.p">fev/2020 a fev/2021</span>
         <div>
-          <h3>Estagiário</h3>
-          <p class="org">Procon/DF</p>
+          <h3 data-i18n="exp.intern">Estagiário</h3>
+          <p class="org" data-i18n="exp.procon.o">Procon/DF</p>
         </div>
       </li>
     </ol>
@@ -759,24 +920,24 @@
 
   <!-- ================= FORMAÇÃO ================= -->
   <section class="panel" id="formacao" role="tabpanel" aria-labelledby="tab-formacao" tabindex="-1" hidden>
-    <h2>Formação</h2>
+    <h2 data-i18n="tab.formacao">Formação</h2>
     <ol class="entries">
       <li class="entry">
-        <span class="period">2025 a 2029 (previsão)</span>
+        <span class="period" data-i18n="edu.unb.p">2025 a 2029 (previsão)</span>
         <div>
-          <h3>Graduação em Computação</h3>
-          <p class="org">Universidade de Brasília (UnB), em andamento, 3º semestre</p>
-          <ul>
+          <h3 data-i18n="edu.unb.t">Graduação em Computação</h3>
+          <p class="org" data-i18n="edu.unb.o">Universidade de Brasília (UnB), em andamento, 3º semestre</p>
+          <ul data-i18n="edu.unb.ul">
             <li>Disciplinas em curso: Circuitos Lógicos, Linguagens de Programação, Lógica Computacional 1, Redes de Computadores e Técnicas de Programação 1.</li>
           </ul>
         </div>
       </li>
       <li class="entry">
-        <span class="period">2019 a 2022</span>
+        <span class="period" data-i18n="edu.ceub.p">2019 a 2022</span>
         <div>
-          <h3>Bacharelado em Direito</h3>
-          <p class="org">Centro Universitário de Brasília (UniCEUB), colação de grau em fevereiro de 2023</p>
-          <ul>
+          <h3 data-i18n="edu.ceub.t">Bacharelado em Direito</h3>
+          <p class="org" data-i18n="edu.ceub.o">Centro Universitário de Brasília (UniCEUB), colação de grau em fevereiro de 2023</p>
+          <ul data-i18n="edu.ceub.ul">
             <li>Média global de 9,02 em 10.</li>
             <li>TCC publicado no repositório institucional e incluído em coletânea oficial: <a href="https://repositorio.uniceub.br/items/e0f0bb10-304d-45be-9f9a-37c86ad7b434" target="_blank" rel="noopener">"A acusação de genocídio indígena na pandemia da COVID-19"</a>.</li>
             <li>Aprovado no XXXVI Exame de Ordem Unificado. Inscrição ativa na OAB/DF.</li>
@@ -784,11 +945,11 @@
         </div>
       </li>
       <li class="entry featured">
-        <span class="period">2024 a 2026</span>
+        <span class="period" data-i18n="edu.agu.p">2024 a 2026</span>
         <div>
-          <h3>Especialização em Funções Institucionais da AGU <span class="tag">370 h</span></h3>
-          <p class="org">Escola Superior da Advocacia-Geral da União</p>
-          <ul>
+          <h3><span data-i18n="edu.agu.t">Especialização em Funções Institucionais da AGU</span> <span class="tag">370 h</span></h3>
+          <p class="org" data-i18n="edu.agu.o">Escola Superior da Advocacia-Geral da União</p>
+          <ul data-i18n="edu.agu.ul">
             <li>Cursada em conjunto com o estágio de pós-graduação na Procuradoria Regional Federal da 1ª Região.</li>
           </ul>
         </div>
@@ -796,8 +957,8 @@
     </ol>
 
     <details class="more">
-      <summary>Outras especializações concluídas (5)</summary>
-      <ul>
+      <summary data-i18n="edu.more">Outras especializações concluídas (5)</summary>
+      <ul data-i18n="edu.moreUl">
         <li>Direito Civil e Direito Processual Civil, Faculdade Legale <span>2023 a 2024</span></li>
         <li>Direito Tributário e Processo Tributário, Faculdade Legale <span>2023 a 2024</span></li>
         <li>Auditoria Fiscal, Gran Centro Universitário <span>2023 a 2024</span></li>
@@ -809,14 +970,14 @@
 
   <!-- ================= COMPETÊNCIAS ================= -->
   <section class="panel" id="competencias" role="tabpanel" aria-labelledby="tab-competencias" tabindex="-1" hidden>
-    <h2>Competências</h2>
-    <p class="lead">Separei o que já uso no trabalho do que estou desenvolvendo na graduação.</p>
+    <h2 data-i18n="tab.competencias">Competências</h2>
+    <p class="lead" data-i18n="sk.lead">Separei o que já uso no trabalho do que estou desenvolvendo na graduação.</p>
 
     <div class="skills">
       <div class="skill-box">
-        <h3>Uso no trabalho</h3>
-        <p>Rotina diária na controladoria jurídica e experiência acumulada nos estágios.</p>
-        <ul class="chips">
+        <h3 data-i18n="sk.workT">Uso no trabalho</h3>
+        <p data-i18n="sk.work">Rotina diária na controladoria jurídica e experiência acumulada nos estágios.</p>
+        <ul class="chips" data-i18n="sk.workUl">
           <li>Controle de prazos processuais</li>
           <li>Análise processual em volume</li>
           <li>Emissão de guias</li>
@@ -828,9 +989,9 @@
         </ul>
       </div>
       <div class="skill-box building">
-        <h3>Em desenvolvimento</h3>
-        <p>Fundamentos adquiridos nas disciplinas da UnB, ainda sem uso profissional.</p>
-        <ul class="chips">
+        <h3 data-i18n="sk.devT">Em desenvolvimento</h3>
+        <p data-i18n="sk.dev">Fundamentos adquiridos nas disciplinas da UnB, ainda sem uso profissional.</p>
+        <ul class="chips" data-i18n="sk.devUl">
           <li>Python</li>
           <li>C e C++</li>
           <li>Estruturas de dados</li>
@@ -845,26 +1006,26 @@
     </div>
 
     <div class="skill-box ai-box">
-      <h3>Uso de inteligência artificial</h3>
-      <p>Uso ferramentas de IA generativa no dia a dia, com revisão própria de tudo o que produzem.</p>
-      <ul class="chips">
+      <h3 data-i18n="sk.aiT">Uso de inteligência artificial</h3>
+      <p data-i18n="sk.ai">Uso ferramentas de IA generativa no dia a dia, com revisão própria de tudo o que produzem.</p>
+      <ul class="chips" data-i18n="sk.aiUl">
         <li>Pesquisa e organização de informações</li>
         <li>Apoio à redação e revisão de textos</li>
         <li>Criação de sites</li>
         <li>Estudo e prática de programação</li>
       </ul>
-      <p class="ai-note">Este site é um exemplo: foi planejado e escrito com apoio de IA, e todo o conteúdo foi conferido por mim.</p>
+      <p class="ai-note" data-i18n="sk.aiNote">Este site é um exemplo: foi planejado e escrito com apoio de IA, e todo o conteúdo foi conferido por mim.</p>
     </div>
 
     <div class="split">
       <div class="skill-box project">
-        <h3>Projeto: sistema de gestão Kanban em C++</h3>
-        <p>Sistema de gestão de projetos com quadro Kanban, com pessoas, projetos, quadros e cartões de atividade. Desenvolvido em equipe ao longo de 12 laboratórios da disciplina Técnicas de Programação 1, na UnB, em andamento. Cobre classes de domínio e entidade, tratamento de exceções, testes de unidade, fábricas, interfaces e controladoras.</p>
-        <a href="https://github.com/flavio-dematos" target="_blank" rel="noopener">Ver no GitHub</a>
+        <h3 data-i18n="sk.projT">Projeto: sistema de gestão Kanban em C++</h3>
+        <p data-i18n="sk.proj">Sistema de gestão de projetos com quadro Kanban, com pessoas, projetos, quadros e cartões de atividade. Desenvolvido em equipe ao longo de 12 laboratórios da disciplina Técnicas de Programação 1, na UnB, em andamento. Cobre classes de domínio e entidade, tratamento de exceções, testes de unidade, fábricas, interfaces e controladoras.</p>
+        <a href="https://github.com/flavio-dematos" target="_blank" rel="noopener" data-i18n="sk.projLink">Ver no GitHub</a>
       </div>
       <div class="skill-box">
-        <h3>Idiomas</h3>
-        <ul class="langs">
+        <h3 data-i18n="sk.langT">Idiomas</h3>
+        <ul class="langs" data-i18n="sk.langUl">
           <li>Português <span>nativo</span></li>
           <li>Inglês <span>avançado, C1 (IELTS 7.0)<br><small>Casa Thomas Jefferson, 576 h</small></span></li>
           <li>Espanhol <span>intermediário<br><small>UnB Idiomas, até Intermediário II, 227 h</small></span></li>
@@ -879,9 +1040,9 @@
   <section class="panel" id="contato" role="tabpanel" aria-labelledby="tab-contato" tabindex="-1" hidden>
     <div class="contact">
       <div>
-        <h2>Vamos conversar</h2>
-        <p class="lead">Minha preferência são vagas na intersecção entre Direito e tecnologia, como legal ops, legaltech e controladoria jurídica. Também estou aberto a vagas estritamente jurídicas, sobretudo em cível, consumidor e conciliação, e a estágios em tecnologia.</p>
-        <p class="lead">Moro em Brasília, DF.</p>
+        <h2 data-i18n="ct.title">Vamos conversar</h2>
+        <p class="lead" data-i18n="ct.lead">Minha preferência são vagas na intersecção entre Direito e tecnologia, como legal ops, legaltech e controladoria jurídica. Também estou aberto a vagas estritamente jurídicas, sobretudo em cível, consumidor e conciliação, e a estágios em tecnologia.</p>
+        <p class="lead" data-i18n="ct.city">Moro em Brasília, DF.</p>
       </div>
       <ul class="contact-list">
         <li>
@@ -901,17 +1062,254 @@
 
 <footer>
   <div class="wrap">
-    <p>Site feito com apoio de IA e revisado por mim. As competências técnicas aparecem no nível em que realmente estão.</p>
-    <button class="print-btn" type="button" onclick="window.print()">Imprimir ou salvar em PDF</button>
+    <p data-i18n="ft.note">Site feito com apoio de IA e revisado por mim. As competências técnicas aparecem no nível em que realmente estão.</p>
+    <button class="print-btn" type="button" onclick="window.print()" data-i18n="ft.print">Imprimir ou salvar em PDF</button>
   </div>
 </footer>
 
+<!--
+  TRADUÇÕES PARA O INGLÊS
+  O português fica no próprio HTML. Aqui ficam só as versões em inglês, ligadas pelo atributo data-i18n.
+  Para mudar um texto em inglês, edite o valor correspondente. Se uma chave faltar, o site mostra o português.
+-->
+<script type="application/json" id="i18n-en">
+{
+  "meta.title": "Flávio de Matos | Law and Computing",
+  "meta.description": "Brazilian attorney (OAB/DF) and Computing student at the University of Brasília. Background, education, experience and work at the intersection of law and technology.",
+  "ui.langGroup": "Language",
+  "ui.tabsLabel": "Site sections",
+
+  "tab.inicio": "Home",
+  "tab.trajetoria": "Journey",
+  "tab.experiencia": "Experience",
+  "tab.formacao": "Education",
+  "tab.competencias": "Skills",
+  "tab.contato": "Contact",
+
+  "inicio.photoAlt": "Portrait of Flávio de Matos wearing a grey blazer and a white shirt",
+  "inicio.lead": "Brazilian attorney admitted to the Bar (OAB/DF) and Computing student at the University of Brasília. I work on the operational side of litigation and I am learning to write, in code, the rules I currently apply by hand.",
+  "inicio.nowLawT": "In law today",
+  "inicio.nowLaw": "Legal Controller (attorney) at Advocacia Maciel, reviewing 200 to 300 case files a day.",
+  "inicio.nowCsT": "In computing today",
+  "inicio.nowCs": "Third semester of a Computing degree at UnB: C, C++, Python, logic and networks.",
+  "inicio.seekT": "What I am looking for",
+  "inicio.seek": "Ideally, roles where both backgrounds count, such as legal operations, legal tech and legal controllership. I am also open to purely legal roles and technology internships.",
+
+  "rule.title": "One rule, written twice",
+  "rule.intro": "Managing deadlines is a big part of my job. The counting rules in civil procedure codes are precise enough to become algorithms. Compare the Brazilian rule, which counts business days only, with the Portuguese one, which runs continuously and pauses during court holidays.",
+  "rule.jurisGroup": "Legal system",
+  "rule.br": "Brazil · 2015 CPC",
+  "rule.pt": "Portugal · 2013 CPC",
+  "rule.inLaw": "In the law (free translation)",
+  "rule.br219": "When counting time limits set in days, whether established by law or by the judge, only business days shall be counted.",
+  "rule.br219c": "Brazilian Code of Civil Procedure, art. 219",
+  "rule.br224": "Unless otherwise provided, time limits shall be counted excluding the starting day and including the final day.",
+  "rule.br224c": "Brazilian Code of Civil Procedure, art. 224",
+  "rule.pt138a": "A procedural time limit, whether established by law or set by order of the judge, runs continuously, but is suspended during court holidays, unless it lasts six months or more or concerns acts in proceedings the law considers urgent.",
+  "rule.pt138ac": "Portuguese Code of Civil Procedure, art. 138(1)",
+  "rule.pt138b": "When the time limit for a procedural act ends on a day on which the courts are closed, its end is moved to the next business day.",
+  "rule.pt138bc": "Portuguese Code of Civil Procedure, art. 138(2)",
+
+  "traj.title": "From legal practice to computing, without leaving the law",
+  "traj.lead": "I did not swap one field for the other. Computing became part of my education as an answer to something I saw every day in legal work.",
+  "tl.sr": "Interactive timeline",
+  "tl.hintMouse": "Move your mouse along the line or click the years to follow the story. The arrow keys work too.",
+  "tl.hintTouch": "Tap a year or drag your finger along the line to follow the story.",
+  "tl.markers": "Periods of my journey",
+  "tl.prev": "Previous",
+  "tl.next": "Next",
+  "tl.prevAria": "Previous period",
+  "tl.nextAria": "Next period",
+
+  "meet.title": "Where the two fields meet",
+  "meet.aT": "Rules as logic",
+  "meet.a": "Deadlines, requirements and procedures can be described as conditions and steps. Someone who knows the rule in detail can specify precisely what a system should do.",
+  "meet.bT": "Cases as data",
+  "meet.b": "Every court system stores filings, dates and parties. Once organized, that data reveals bottlenecks, deadline risks and a firm's workload.",
+  "meet.cT": "Translating both ways",
+  "meet.c": "Explaining technology to lawyers and legal rules to developers is part of the job in legal operations and legal tech. Having both backgrounds makes me comfortable on both sides of that conversation.",
+  "meet.honest": "I am still at the fundamentals of programming. What I bring ready is knowledge of litigation and legal routines. What I am building is the ability to automate them.",
+
+  "exp.areasT": "Practice areas",
+  "exp.civilT": "Civil",
+  "exp.civil": "My main practice area, from internships to legal controllership.",
+  "exp.consT": "Consumer",
+  "exp.cons": "Procon/DF, the Legal Residency and day-to-day litigation at law firms.",
+  "exp.concT": "Conciliation",
+  "exp.conc": "Hearings and the search for negotiated settlements.",
+  "exp.more": "<strong>Also experienced in:</strong> employment law, with intensive work at MFA Advogadas, and federal public advocacy at the Attorney General's Office. <strong>Studied but not practiced:</strong> tax law, with a completed specialization and a genuine interest in the field.",
+  "exp.maciel.p": "Mar 2026 to present",
+  "exp.maciel.t": "Legal Controller (attorney)",
+  "exp.maciel.ul": "<li>Reviews about 200 to 300 case files a day, managing deadlines and compliance with court orders.</li><li>Issues court fee slips, schedules and attends hearings, works on case management stages and prepares litigation reports.</li><li>Uses the court and practice management systems PJe, SEI, Projudi, ESAJ, CPJ and Projuris.</li><li>Adopted autofill tools to standardize and speed up data entry and fee slip routines.</li>",
+  "exp.agu.p": "Mar 2024 to Mar 2026",
+  "exp.agu.t": "Postgraduate legal intern",
+  "exp.agu.o": "Office of the Attorney General of Brazil (AGU), Federal Regional Attorney's Office, 1st Region",
+  "exp.agu.ul": "<li>Drafted legal briefs under the supervision of Federal Attorneys.</li><li>Tracked and processed court cases and entered data and official publications in the SAPIENS system.</li><li>Researched case law, legal scholarship and legislation and prepared internal documents.</li><li>Internship linked to the AGU School's specialization program, completed in 2026.</li>",
+  "exp.res.p": "Second half of 2023",
+  "exp.res.t": "Legal resident",
+  "exp.res.o": "Bar Association of the Federal District (OAB/DF), 1st Legal Residency program",
+  "exp.res.ul": "<li>Worked at the firms Moreschi e Reis and MFA Advogadas on civil, consumer, medical and employment law matters.</li><li>Handled a heavy load of employment cases at MFA Advogadas.</li>",
+  "exp.km.p": "Apr 2021 to Sep 2022",
+  "exp.km.t": "Bilingual monitor",
+  "exp.km.ul": "<li>Accompanied international students of all ages in English on school van routes.</li><li>Helped monitor and manage student safety during the trips.</li><li>Kept constant contact with the driver and the base to control routes and pick-ups.</li>",
+  "exp.intern": "Legal intern",
+  "exp.mj.p": "Mar 2021 to Apr 2022",
+  "exp.mj.o": "Ministry of Justice and Public Security, Department of Asset Recovery and International Legal Cooperation (DRCI)",
+  "exp.procon.p": "Feb 2020 to Feb 2021",
+  "exp.procon.o": "Procon/DF, consumer protection agency of the Federal District",
+
+  "edu.unb.p": "2025 to 2029 (expected)",
+  "edu.unb.t": "Undergraduate degree in Computing",
+  "edu.unb.o": "University of Brasília (UnB), in progress, third semester",
+  "edu.unb.ul": "<li>Current courses: Logic Circuits, Programming Languages, Computational Logic 1, Computer Networks and Programming Techniques 1.</li>",
+  "edu.ceub.p": "2019 to 2022",
+  "edu.ceub.t": "Bachelor of Laws",
+  "edu.ceub.o": "University Center of Brasília (UniCEUB), graduated in February 2023",
+  "edu.ceub.ul": "<li>GPA of 9.02 out of 10.</li><li>Undergraduate thesis published in the institutional repository and included in an official collection: <a href=\"https://repositorio.uniceub.br/items/e0f0bb10-304d-45be-9f9a-37c86ad7b434\" target=\"_blank\" rel=\"noopener\">\"The accusation of Indigenous genocide during the COVID-19 pandemic\"</a> (in Portuguese).</li><li>Passed the 36th Brazilian Bar Exam. Active member of the Bar Association (OAB/DF).</li>",
+  "edu.agu.p": "2024 to 2026",
+  "edu.agu.t": "Postgraduate specialization in the Institutional Functions of the AGU",
+  "edu.agu.o": "School of the Office of the Attorney General of Brazil (ESAGU)",
+  "edu.agu.ul": "<li>Taken alongside the postgraduate internship at the Federal Regional Attorney's Office, 1st Region.</li>",
+  "edu.more": "Other completed specializations (5)",
+  "edu.moreUl": "<li>Civil Law and Civil Procedure, Faculdade Legale <span>2023 to 2024</span></li><li>Tax Law and Tax Procedure, Faculdade Legale <span>2023 to 2024</span></li><li>Tax Auditing, Gran Centro Universitário <span>2023 to 2024</span></li><li>Business and Real Estate Law Practice, EBRADI and Universidade São Judas Tadeu <span>2023</span></li><li>Applied Sports Law, Faculdade Legale <span>2024</span></li>",
+
+  "sk.lead": "I have separated what I already use at work from what I am developing in my degree.",
+  "sk.workT": "Used at work",
+  "sk.work": "Daily routine in legal controllership and experience from my internships.",
+  "sk.workUl": "<li>Procedural deadline management</li><li>High-volume case review</li><li>Court fee slips</li><li>Hearings and case management</li><li>Litigation reports</li><li>PJe</li><li>SEI</li><li>Projudi</li><li>ESAJ</li><li>CPJ</li><li>Projuris</li><li>SAPIENS</li><li>Case law research</li><li>Drafting legal briefs</li>",
+  "sk.devT": "In development",
+  "sk.dev": "Fundamentals from my UnB courses, not yet used professionally.",
+  "sk.devUl": "<li>Python</li><li>C and C++</li><li>Data structures</li><li>Object-oriented programming</li><li>Haskell and functional programming</li><li>Propositional logic and natural deduction</li><li>Digital systems and Karnaugh maps</li><li>Computer networks</li><li>Git</li><li>VS Code</li><li>CLion</li>",
+  "sk.aiT": "Using artificial intelligence",
+  "sk.ai": "I use generative AI tools every day and review everything they produce.",
+  "sk.aiUl": "<li>Research and organizing information</li><li>Writing and editing support</li><li>Building websites</li><li>Studying and practicing programming</li>",
+  "sk.aiNote": "This website is an example: it was planned and written with AI assistance, and I checked all of its content.",
+  "sk.projT": "Project: Kanban management system in C++",
+  "sk.proj": "A project management system with a Kanban board, covering people, projects, boards and task cards. Built as a team across 12 labs in the Programming Techniques 1 course at UnB, still in progress. It covers domain and entity classes, exception handling, unit tests, factories, interfaces and controllers.",
+  "sk.projLink": "See on GitHub",
+  "sk.langT": "Languages",
+  "sk.langUl": "<li>Portuguese <span>native</span></li><li>English <span>advanced, C1 (IELTS 7.0)<br><small>Casa Thomas Jefferson, 576 h</small></span></li><li>Spanish <span>intermediate<br><small>UnB Idiomas, up to Intermediate II, 227 h</small></span></li><li>French <span>intermediate<br><small>UnB Idiomas, up to Intermediate II, 270 h</small></span></li><li>Italian <span>beginner<br><small>UnB Idiomas, Beginner I, 45 h</small></span></li>",
+
+  "ct.title": "Let's talk",
+  "ct.lead": "I am most interested in roles at the intersection of law and technology, such as legal operations, legal tech and legal controllership. I am also open to purely legal roles, especially in civil, consumer and conciliation work, and to technology internships.",
+  "ct.city": "Based in Brasília, Brazil.",
+
+  "ft.note": "This site was built with AI assistance and reviewed by me. Technical skills are shown at the level they actually are.",
+  "ft.print": "Print or save as PDF"
+}
+</script>
+
 <script>
+/* ---------- idioma (PT/EN) ---------- */
 (function () {
+  var en = {};
+  try { en = JSON.parse(document.getElementById('i18n-en').textContent); } catch (e) { console.error('Traduções: JSON inválido em #i18n-en.', e); }
+
+  var nodes = Array.prototype.slice.call(document.querySelectorAll('[data-i18n]'));
+  var attrNodes = Array.prototype.slice.call(document.querySelectorAll('[data-i18n-attr]'));
+  var pt = { 'meta.title': document.title, 'meta.description': (document.querySelector('meta[name="description"]') || {}).content };
+  nodes.forEach(function (n) { pt[n.dataset.i18n] = pt[n.dataset.i18n] || n.innerHTML; });
+  attrNodes.forEach(function (n) {
+    n.dataset.i18nAttr.split(';').forEach(function (pair) {
+      var p = pair.split('='); pt[p[1]] = pt[p[1]] || n.getAttribute(p[0]);
+    });
+  });
+
+  var listeners = [];
+  var I18n = {
+    lang: 'pt',
+    t: function (key) { return (I18n.lang === 'en' && en[key] != null) ? en[key] : pt[key]; },
+    onChange: function (fn) { listeners.push(fn); }
+  };
+  window.SiteI18n = I18n;
+
+  function apply(lang, persist) {
+    I18n.lang = lang === 'en' ? 'en' : 'pt';
+    document.documentElement.lang = I18n.lang === 'en' ? 'en' : 'pt-BR';
+    nodes.forEach(function (n) { n.innerHTML = I18n.t(n.dataset.i18n); });
+    attrNodes.forEach(function (n) {
+      n.dataset.i18nAttr.split(';').forEach(function (pair) { var p = pair.split('='); n.setAttribute(p[0], I18n.t(p[1])); });
+    });
+    document.title = I18n.t('meta.title');
+    var md = document.querySelector('meta[name="description"]'); if (md) md.content = I18n.t('meta.description');
+    document.querySelectorAll('[data-lang]').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.lang === I18n.lang ? 'true' : 'false'); });
+    if (persist) {
+      try { localStorage.setItem('lang', I18n.lang); } catch (e) {}
+      var url = new URL(location.href);
+      if (I18n.lang === 'en') url.searchParams.set('lang', 'en'); else url.searchParams.delete('lang');
+      history.replaceState(history.state, '', url.pathname + url.search + url.hash);
+    }
+    listeners.forEach(function (fn) { fn(I18n.lang); });
+  }
+  I18n.apply = apply;
+
+  var initial = null;
+  try { initial = new URLSearchParams(location.search).get('lang'); } catch (e) {}
+  if (initial !== 'en' && initial !== 'pt') {
+    try { initial = localStorage.getItem('lang'); } catch (e) {}
+  }
+  if (initial !== 'en' && initial !== 'pt') {
+    initial = /^pt\b/i.test(navigator.language || 'pt') ? 'pt' : 'en';
+  }
+  I18n.initial = initial;
+  document.querySelectorAll('[data-lang]').forEach(function (b) {
+    b.addEventListener('click', function () { apply(b.dataset.lang, true); });
+  });
+})();
+
+(function () {
+  var I18n = window.SiteI18n;
+  var S = {
+    pt: {
+      theme: 'Tema', themes: { system: 'sistema', light: 'claro', dark: 'escuro' }, themeAria: 'Tema atual: {t}. Clique para trocar.',
+      copy: 'Copiar', copied: 'Copiado',
+      wd: ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'],
+      wdLong: ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado'],
+      startCell: 'início', holidayCell: 'férias', calAria: 'Dias contados até o fim do prazo',
+      invalid: 'Informe uma data e um prazo entre 1 e 30 dias.',
+      br: {
+        date: 'Data da intimação', days: 'Prazo em dias úteis',
+        legend: { start: 'Intimação', off: 'Fim de semana, não conta', count: 'Dia útil contado', due: 'Vencimento' },
+        result: 'Intimado em {d}, o prazo de {n} dias úteis vence em <strong>{due}</strong>.',
+        note: 'Versão didática: não considera feriados, recesso forense, suspensões de prazo nem as regras de publicação no Diário de Justiça eletrônico (art. 224, §§ 2º e 3º). Não use para controle real de prazos.'
+      },
+      pt: {
+        date: 'Data da notificação', days: 'Prazo em dias',
+        legend: { start: 'Notificação', count: 'Dia contado, inclusive fim de semana', holiday: 'Férias judiciais, prazo suspenso', moved: 'Tribunal fechado, termo transferido', due: 'Termo do prazo' },
+        result: 'Notificado em {d}, o prazo de {n} dias termina em <strong>{due}</strong>.',
+        held: ' As férias judiciais suspenderam a contagem por {k} dias.',
+        moved: ' O último dia caiu com o tribunal fechado e o termo passou para o 1.º dia útil seguinte.',
+        note: 'Versão didática: considera as férias judiciais (22/12 a 3/1, Domingo de Ramos à segunda-feira de Páscoa e 16/7 a 31/8), mas não feriados, processos urgentes, prazos de seis meses ou mais nem regras especiais de citação e notificação. Não use para controle real de prazos.'
+      }
+    },
+    en: {
+      theme: 'Theme', themes: { system: 'system', light: 'light', dark: 'dark' }, themeAria: 'Current theme: {t}. Click to change.',
+      copy: 'Copy', copied: 'Copied',
+      wd: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+      wdLong: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      startCell: 'start', holidayCell: 'holiday', calAria: 'Days counted until the time limit ends',
+      invalid: 'Enter a date and a time limit between 1 and 30 days.',
+      br: {
+        date: 'Date of service', days: 'Time limit in business days',
+        legend: { start: 'Service', off: 'Weekend, not counted', count: 'Business day counted', due: 'Due date' },
+        result: 'Served on {d}, a {n} business day time limit ends on <strong>{due}</strong>.',
+        note: 'Teaching version: it ignores public holidays, court recess, suspensions and the rules on publication in the electronic court gazette (art. 224, §§ 2 and 3). Do not use it for real deadline management.'
+      },
+      pt: {
+        date: 'Date of notice', days: 'Time limit in days',
+        legend: { start: 'Notice', count: 'Day counted, weekends included', holiday: 'Court holidays, time limit paused', moved: 'Courts closed, end moved', due: 'End of time limit' },
+        result: 'Notified on {d}, a {n} day time limit ends on <strong>{due}</strong>.',
+        held: ' Court holidays paused the count for {k} days.',
+        moved: ' The last day fell when courts were closed, so the end moved to the next business day.',
+        note: 'Teaching version: it applies court holidays (Dec 22 to Jan 3, Palm Sunday to Easter Monday, and Jul 16 to Aug 31), but not public holidays, urgent proceedings, time limits of six months or more, or special service rules. Do not use it for real deadline management.'
+      }
+    }
+  };
+  function s() { return S[I18n.lang]; }
+
   /* ---------- tabs ---------- */
   var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
   var ids = tabs.map(function (t) { return t.dataset.target; });
-
   function select(id, focusTab, push) {
     if (ids.indexOf(id) === -1) id = 'inicio';
     tabs.forEach(function (t) {
@@ -921,10 +1319,9 @@
       document.getElementById(t.dataset.target).hidden = !on;
       if (on && focusTab) t.focus();
     });
-    if (push && location.hash !== '#' + id) history.pushState(null, '', '#' + id);
+    if (push && location.hash !== '#' + id) history.pushState(null, '', location.pathname + location.search + '#' + id);
     window.scrollTo(0, 0);
   }
-
   tabs.forEach(function (t, i) {
     t.addEventListener('click', function () { select(t.dataset.target, false, true); });
     t.addEventListener('keydown', function (e) {
@@ -945,16 +1342,15 @@
 
   /* ---------- theme ---------- */
   var order = ['system', 'light', 'dark'];
-  var names = { system: 'sistema', light: 'claro', dark: 'escuro' };
   var current = 'system';
   try { current = localStorage.getItem('theme') || 'system'; } catch (e) {}
   function applyTheme(t) {
     if (t === 'system') document.documentElement.removeAttribute('data-theme');
     else document.documentElement.setAttribute('data-theme', t);
-    document.getElementById('theme-label').textContent = 'Tema: ' + names[t];
-    document.getElementById('theme-btn').setAttribute('aria-label', 'Tema atual: ' + names[t] + '. Clique para trocar.');
+    var name = s().themes[t];
+    document.getElementById('theme-label').textContent = s().theme + ': ' + name;
+    document.getElementById('theme-btn').setAttribute('aria-label', s().themeAria.replace('{t}', name));
   }
-  applyTheme(current);
   document.getElementById('theme-btn').addEventListener('click', function () {
     current = order[(order.indexOf(current) + 1) % order.length];
     applyTheme(current);
@@ -964,62 +1360,148 @@
   /* ---------- copy e-mail ---------- */
   var copyBtn = document.getElementById('copy-email');
   copyBtn.addEventListener('click', function () {
-    var done = function () { copyBtn.textContent = 'Copiado'; setTimeout(function () { copyBtn.textContent = 'Copiar'; }, 1800); };
+    var done = function () { copyBtn.textContent = s().copied; setTimeout(function () { copyBtn.textContent = s().copy; }, 1800); };
     if (navigator.clipboard) navigator.clipboard.writeText('flavio.dematos@advdf.com.br').then(done, function () {});
   });
 
-  /* ---------- deadline calculator ---------- */
+  /* ---------- calculadora de prazos (Brasil e Portugal) ---------- */
+  var bil = document.getElementById('bilingual');
   var dateIn = document.getElementById('calc-date');
   var daysIn = document.getElementById('calc-days');
   var resultEl = document.getElementById('calc-result');
   var calEl = document.getElementById('calc-cal');
-  var wd = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'];
-  var wdLong = ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado'];
+  var legendEl = document.getElementById('calc-legend');
+  var noteEl = document.getElementById('calc-note');
+  var juris = 'br';
 
   function iso(d) { return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
-  function br(d) { return String(d.getDate()).padStart(2, '0') + '/' + String(d.getMonth() + 1).padStart(2, '0') + '/' + d.getFullYear(); }
+  function fmt(d) {
+    if (I18n.lang === 'en') return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    return String(d.getDate()).padStart(2, '0') + '/' + String(d.getMonth() + 1).padStart(2, '0') + '/' + d.getFullYear();
+  }
+  function fmtShort(d) {
+    if (I18n.lang === 'en') return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    return String(d.getDate()).padStart(2, '0') + '/' + String(d.getMonth() + 1).padStart(2, '0');
+  }
+  function addDays(d, k) { var r = new Date(d); r.setDate(r.getDate() + k); return r; }
+  function isWeekend(d) { var w = d.getDay(); return w === 0 || w === 6; }
 
-  var today = new Date();
-  today.setHours(12, 0, 0, 0);
-  dateIn.value = iso(today);
+  /* Domingo de Páscoa (algoritmo gregoriano anônimo) */
+  var easterCache = {};
+  function easter(y) {
+    if (easterCache[y]) return easterCache[y];
+    var a = y % 19, b = Math.floor(y / 100), c = y % 100, d = Math.floor(b / 4), e = b % 4;
+    var f = Math.floor((b + 8) / 25), g = Math.floor((b - f + 1) / 3), h = (19 * a + b - d - g + 15) % 30;
+    var i = Math.floor(c / 4), k = c % 4, l = (32 + 2 * e + 2 * i - h - k) % 7, m = Math.floor((a + 11 * h + 22 * l) / 451);
+    var month = Math.floor((h + l - 7 * m + 114) / 31), day = ((h + l - 7 * m + 114) % 31) + 1;
+    return (easterCache[y] = new Date(y, month - 1, day, 12));
+  }
+  /* Férias judiciais em Portugal: 22/12 a 3/1, Domingo de Ramos a segunda-feira de Páscoa, 16/7 a 31/8 */
+  function courtHoliday(d) {
+    var m = d.getMonth() + 1, day = d.getDate();
+    if ((m === 12 && day >= 22) || (m === 1 && day <= 3)) return true;
+    if ((m === 7 && day >= 16) || m === 8) return true;
+    var e = easter(d.getFullYear());
+    return d >= addDays(e, -7) && d <= addDays(e, 1);
+  }
+
+  function computeBR(start, n) {
+    var days = [{ d: start, t: 'start' }], cur = new Date(start), counted = 0;
+    while (counted < n) {
+      cur = addDays(cur, 1);
+      if (isWeekend(cur)) days.push({ d: cur, t: 'off' });
+      else { counted++; days.push({ d: cur, t: counted === n ? 'due' : 'count', k: counted }); }
+    }
+    return { days: days, due: cur };
+  }
+  function computePT(start, n) {
+    var days = [{ d: start, t: 'start' }], cur = new Date(start), counted = 0, held = 0, moved = false;
+    while (counted < n) {
+      cur = addDays(cur, 1);
+      if (courtHoliday(cur)) { held++; days.push({ d: cur, t: 'holiday' }); }
+      else { counted++; days.push({ d: cur, t: 'count', k: counted }); }
+    }
+    var last = days[days.length - 1];
+    if (isWeekend(cur)) {
+      moved = true;
+      while (isWeekend(cur)) { cur = addDays(cur, 1); if (isWeekend(cur)) days.push({ d: cur, t: 'moved' }); }
+      days.push({ d: cur, t: 'due', k: null });
+    } else {
+      last.t = 'due';
+    }
+    return { days: days, due: cur, held: held, moved: moved };
+  }
 
   function cell(d, cls, label) {
     var li = document.createElement('li');
     li.className = cls;
-    li.innerHTML = '<i>' + wd[d.getDay()] + '</i><b>' + d.getDate() + '</b><i>' + label + '</i>';
+    li.innerHTML = '<i>' + s().wd[d.getDay()] + '</i><b>' + d.getDate() + '</b><i>' + label + '</i>';
     return li;
+  }
+  function ord(k) { return I18n.lang === 'en' ? (k + (['th', 'st', 'nd', 'rd'][(k % 100 >= 11 && k % 100 <= 13) ? 0 : (k % 10 < 4 ? k % 10 : 0)])) : k + 'º'; }
+
+  function renderLegend() {
+    var L = s()[juris].legend, map = { start: 'l-start', off: 'l-off', count: 'l-count', holiday: 'l-holiday', moved: 'l-off', due: 'l-due' };
+    legendEl.innerHTML = '';
+    Object.keys(L).forEach(function (k) { var sp = document.createElement('span'); sp.className = map[k]; sp.textContent = L[k]; legendEl.appendChild(sp); });
   }
 
   function run() {
+    var J = s()[juris];
+    document.getElementById('calc-date-label').textContent = J.date;
+    document.getElementById('calc-days-label').textContent = J.days;
+    noteEl.textContent = J.note;
+    calEl.setAttribute('aria-label', s().calAria);
+    renderLegend();
     var parts = (dateIn.value || '').split('-');
     var n = parseInt(daysIn.value, 10);
-    if (parts.length !== 3 || isNaN(n) || n < 1 || n > 30) {
-      resultEl.textContent = 'Informe uma data e um prazo entre 1 e 30 dias úteis.';
-      calEl.innerHTML = '';
-      return;
-    }
+    if (parts.length !== 3 || isNaN(n) || n < 1 || n > 30) { resultEl.textContent = s().invalid; calEl.innerHTML = ''; return; }
     var start = new Date(+parts[0], +parts[1] - 1, +parts[2], 12);
-    var cur = new Date(start);
-    var counted = 0;
+    var r = juris === 'pt' ? computePT(start, n) : computeBR(start, n);
     calEl.innerHTML = '';
-    calEl.appendChild(cell(start, 'start', 'início'));
-    while (counted < n) {
-      cur.setDate(cur.getDate() + 1);
-      var day = cur.getDay();
-      if (day === 0 || day === 6) {
-        calEl.appendChild(cell(cur, 'off', ''));
-      } else {
-        counted++;
-        calEl.appendChild(cell(cur, counted === n ? 'due' : 'count', counted + 'º'));
+    for (var i = 0; i < r.days.length; i++) {
+      var x = r.days[i];
+      if (x.t === 'holiday') {
+        var j = i; while (j + 1 < r.days.length && r.days[j + 1].t === 'holiday') j++;
+        if (j - i >= 3) {
+          var li = document.createElement('li');
+          li.className = 'holiday span';
+          li.innerHTML = '<i>' + s().holidayCell + '</i><b>' + fmtShort(x.d) + (I18n.lang === 'en' ? ' to ' : ' a ') + fmtShort(r.days[j].d) + '</b><i>' + (j - i + 1) + (I18n.lang === 'en' ? ' days' : ' dias') + '</i>';
+          calEl.appendChild(li); i = j; continue;
+        }
+        calEl.appendChild(cell(x.d, 'holiday', s().holidayCell)); continue;
       }
+      if (x.t === 'start') calEl.appendChild(cell(x.d, 'start', s().startCell));
+      else if (x.t === 'off' || x.t === 'moved') calEl.appendChild(cell(x.d, 'off', ''));
+      else calEl.appendChild(cell(x.d, x.t === 'due' ? 'due' : 'count', x.k ? ord(x.k) : '✓'));
     }
-    resultEl.innerHTML = 'Intimado em ' + br(start) + ', o prazo de ' + n + ' dias úteis vence em <strong>' + br(cur) + ' (' + wdLong[cur.getDay()] + ')</strong>.';
+    var html = J.result.replace('{d}', fmt(start)).replace('{n}', n).replace('{due}', fmt(r.due) + ' (' + s().wdLong[r.due.getDay()] + ')');
+    if (juris === 'pt') { if (r.held) html += J.held.replace('{k}', r.held); if (r.moved) html += J.moved; }
+    resultEl.innerHTML = html;
   }
+
+  var today = new Date(); today.setHours(12, 0, 0, 0);
+  dateIn.value = iso(today);
   dateIn.addEventListener('input', run);
   daysIn.addEventListener('input', run);
-  run();
+
+  var jurisBtns = Array.prototype.slice.call(document.querySelectorAll('[data-juris]'));
+  function setJuris(j) {
+    juris = j === 'pt' ? 'pt' : 'br';
+    bil.dataset.active = juris;
+    jurisBtns.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.juris === juris ? 'true' : 'false'); });
+    run();
+  }
+  jurisBtns.forEach(function (b) { b.addEventListener('click', function () { setJuris(b.dataset.juris); }); });
+
+  I18n.onChange(function () {
+    applyTheme(current);
+    copyBtn.textContent = s().copy;
+    run();
+  });
 })();
 </script>
+
 <script>
 /* Linha do tempo interativa: lê os dados do bloco #tl-data e controla o personagem. */
 (function () {
@@ -1051,6 +1533,9 @@
   });
 
   /* ---------- montar marcadores e painéis ---------- */
+  var I18n = window.SiteI18n;
+  function lang() { return I18n && I18n.lang === 'en' ? 'en' : 'pt'; }
+  function field(d, key) { return (lang() === 'en' && d.en && d.en[key] != null) ? d.en[key] : d[key]; }
   var markers = [];
   var panels = [];
   function el(tag, cls, text) {
@@ -1065,32 +1550,40 @@
     m.id = 'tl-marker-' + d.id;
     m.style.left = (pos[i] * 100) + '%';
     m.setAttribute('aria-controls', 'tl-panel-' + d.id);
-    m.setAttribute('aria-label', d.periodo + ': ' + d.titulo);
     m.dataset.index = i;
     var box = el('span', 'tl-dotbox'); box.appendChild(el('span', 'tl-dot'));
     m.appendChild(box);
-    m.appendChild(el('span', 'tl-label', d.rotulo));
+    m.appendChild(el('span', 'tl-label'));
     markersEl.appendChild(m);
     markers.push(m);
 
     var p = el('article', 'tl-panel');
     p.id = 'tl-panel-' + d.id;
     p.setAttribute('aria-labelledby', 'tl-title-' + d.id);
+    panelsEl.appendChild(p);
+    panels.push(p);
+  });
+
+  function fillPanel(p, d) {
+    p.innerHTML = '';
     var head = el('div', 'tl-panel-head');
-    head.appendChild(el('span', 'tl-panel-period', d.periodo));
-    var h = el('h3', null, d.titulo); h.id = 'tl-title-' + d.id;
+    head.appendChild(el('span', 'tl-panel-period', field(d, 'periodo')));
+    var h = el('h3', null, field(d, 'titulo')); h.id = 'tl-title-' + d.id;
     head.appendChild(h);
-    if (d.area) head.appendChild(el('span', 'tag', d.area));
+    if (field(d, 'area')) head.appendChild(el('span', 'tag', field(d, 'area')));
     var body = el('div', 'tl-panel-body');
-    if (d.imagem && d.imagem.src) {
+    var im = d.imagem;
+    if (im && im.src) {
       var fig = el('figure', 'tl-panel-media');
-      var img = el('img'); img.src = d.imagem.src; img.alt = d.imagem.alt || ''; img.loading = 'lazy';
+      var img = el('img'); img.src = im.src; img.loading = 'lazy';
+      img.alt = (lang() === 'en' && d.en && d.en.imagem && d.en.imagem.alt) || im.alt || '';
       fig.appendChild(img); body.appendChild(fig);
     }
-    (d.texto || []).forEach(function (t) { body.appendChild(el('p', null, t)); });
-    if (d.links && d.links.length) {
+    (field(d, 'texto') || []).forEach(function (t) { body.appendChild(el('p', null, t)); });
+    var links = field(d, 'links');
+    if (links && links.length) {
       var ul = el('ul', 'tl-panel-links');
-      d.links.forEach(function (l) {
+      links.forEach(function (l) {
         var li = el('li'); var a = el('a', null, l.rotulo);
         a.href = l.url; a.target = '_blank'; a.rel = 'noopener';
         li.appendChild(a); ul.appendChild(li);
@@ -1098,9 +1591,18 @@
       body.appendChild(ul);
     }
     p.appendChild(head); p.appendChild(body);
-    panelsEl.appendChild(p);
-    panels.push(p);
-  });
+  }
+  function fillText() {
+    data.forEach(function (d, i) {
+      markers[i].querySelector('.tl-label').textContent = field(d, 'rotulo');
+      markers[i].setAttribute('aria-label', field(d, 'periodo') + ': ' + field(d, 'titulo'));
+      fillPanel(panels[i], d);
+    });
+    if (sel >= 0) updateCount();
+  }
+  function updateCount() {
+    countEl.textContent = (sel + 1) + (lang() === 'en' ? ' of ' : ' de ') + n + ' · ' + field(data[sel], 'periodo');
+  }
 
   /* ---------- estado ---------- */
   var sel = -1;
@@ -1125,7 +1627,7 @@
         p.classList.toggle('is-active', cur);
         p.setAttribute('aria-hidden', cur ? 'false' : 'true');
       });
-      countEl.textContent = (i + 1) + ' de ' + n + ' · ' + data[i].periodo;
+      updateCount();
       prevBtn.disabled = i === 0;
       nextBtn.disabled = i === n - 1;
     }
@@ -1226,13 +1728,16 @@
   prevBtn.addEventListener('click', function () { select(sel - 1); }, on);
   nextBtn.addEventListener('click', function () { select(sel + 1); }, on);
 
+  fillText();
   select(0, { moveTo: false });
   render(false);
+  if (I18n) I18n.onChange(fillText);
 
   /* Remove os listeners, caso a seção seja retirada da página por outro script. */
   root.destroyTimeline = function () { ctrl.abort(); if (rafId) cancelAnimationFrame(rafId); if (pointerRaf) cancelAnimationFrame(pointerRaf); };
 })();
 </script>
 
+<script>window.SiteI18n.apply(window.SiteI18n.initial, false);</script>
 </body>
 </html>
