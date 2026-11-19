@@ -1,5 +1,9 @@
 # Ziru & Zira contra o Monstro do Desamor
 
+![Capa do jogo](capa.png)
+
+**[Jogar agora](https://flavio-dematos.github.io/ziru-e-zira/)**
+
 Beat 'em up em pixel art feito para o casamento de Flávio (Ziru) e Marina (Zira).
 O casal atravessa Brasília, Goiânia, Fernando de Noronha e Lisboa enfrentando os
 "inimigos do namoro" até derrotar o Monstro do Desamor.
@@ -22,3 +26,4 @@ Abra `index.html` num navegador (ou acesse a versão publicada).
 ## Estrutura
 - `index.html`: o jogo inteiro (código, fonte e cenários)
 - `sprites/`: atlas de personagens e inimigos (WebP)
+- `capa.png` / `capa.jpg`: capa do jogo
